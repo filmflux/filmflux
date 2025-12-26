@@ -1,7 +1,14 @@
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/ui/Navbar";
+
 const App = () => {
   return (
     <div>
-      <h1>FilmFlux</h1>
+        <Navbar />
+      <div className="flex min-h-svh flex-col items-center justify-center">
+        <Button variant="destructive" size="lg" className="rounded-full">Click me</Button>
+      </div>
+   
     </div>
   );
 };
