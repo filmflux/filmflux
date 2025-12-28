@@ -3,13 +3,16 @@ Background image
 Movie title
 Description
 CTA buttons (Watch Trailer, Details) */}
+
+import post1 from "@/assets/post1.png"
+
 const HeroSection = () => {
   return (
-        <div className="absolute inset-0">
+        <div className="inset-0">
           <img
-        src="@/assets/post1.png"
+        src={post1}
         alt="Dune Part Two"
-        className="h-full w-full object-cover"
+        className="h-100 w-1000 object-cover"
       />
     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
