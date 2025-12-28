@@ -6,7 +6,7 @@ const App = () => {
     <div>
         <Navbar />
       <div className="flex min-h-svh flex-col items-center justify-center">
-        <Button variant="destructive" size="lg" className="rounded-full">Click me</Button>
+        <Button variant="hex1" size="lg" className="rounded-full">Search</Button>
       </div>
    
     </div>

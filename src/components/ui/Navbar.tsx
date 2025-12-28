@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
@@ -6,6 +7,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <span className="text-white font-bold text-xl">FilmFlex</span>
       </div>
+      {/* Nav */}
       <div className="flex items-center space-x-6">
         <a href="/" className="text-gray-300 hover:text-white">
           Home
@@ -16,6 +18,9 @@ const Navbar = () => {
         <a href="/contact" className="text-gray-300 hover:text-white">
           Reviews
         </a>
+      </div>
+         <div className="flex min-h-svh flex-col items-center justify-center">
+        <Button variant="hex1" size="default">Search</Button>
       </div>
       <div className="flex items-center">
         <Avatar>
