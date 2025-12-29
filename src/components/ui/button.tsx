@@ -20,8 +20,7 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         //Hexagonal Variant
-        hex1: "relative bg-[#22c55e] text-white hover:bg-[#16a34a] rounded-none [clip-path:polygon(15%_0%,_85%_0%,_100%_50%,_85%_100%,_15%_100%,_0%_50%)] px-8 py-3 font-semibold hover:scale-105",
-        hex: "relative bg-emerald-500 text-black hover:bg-emerald-400 [clip-path:polygon(12%_0,100%_0,88%_100%,0_100%)] px-8",
+        hex1: "relative text-white hover:bg-[#16a34a] rounded-none [clip-path:polygon(15%_0%,_85%_0%,_100%_50%,_85%_100%,_15%_100%,_0%_50%)] px-8 py-3 font-semibold hover:scale-105",
         hexOutline: "relative text-emerald-500 hover:text-emerald-400 [clip-path:polygon(12%_0,100%_0,88%_100%,0_100%)] before:absolute before:inset-0 before:bg-emerald-500 before:[clip-path:polygon(12%_0,100%_0,88%_100%,0_100%)] after:absolute after:inset-[1.5px] after:bg-background after:[clip-path:polygon(12%_0,100%_0,88%_100%,0_100%)] px-8",
       },
       size: {
