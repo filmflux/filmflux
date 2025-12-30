@@ -26,7 +26,7 @@ function Input({ className, type, variant = "default", ...props }: InputProps) {
           "relative",
           "bg-[#0fab48] text-white",
           "rounded-none",
-          "[clip-path:polygon(10%_0%,_100%_0%,_95%_50%,_100%_100%,_10%_100%,_0%_50%)]",
+          "[clip-path:polygon(10%_0%,100%_0%,95%_50%,100%_100%,10%_100%,0%_50%)]",
           "px-6 py-2",
           "placeholder:text-white/70",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60",

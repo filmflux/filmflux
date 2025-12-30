@@ -1,29 +1,58 @@
-import { MovieCard } from "@/components/ui/MovieCard";
-
-// import all JPEGs from assets/posters folder
-const posterModules = import.meta.glob('/src/assets/posters/*.jpeg', { eager: true });
-const posters = Object.values(posterModules).map((module: any) => module.default);
+import { useEffect, useState } from "react"
+import { MovieCard } from "@/components/ui/MovieCard"
+// import { getPopularMovies } from "@/lib/api"
 
 type Movie = {
-  id: string
   title: string
   poster: string
   releaseDate: string
 }
 
-const HeroSection = () => {
+const TMDB_API = import.meta.env.VITE_TMDB_API_KEY
+const BASE_URL = "https://api.themoviedb.org/3"
+const IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
+
+function HeroSection() {
+  const [movies, setMovies] = useState<Movie[]>([])
+
+  useEffect(() => {
+    async function fetchMovies() {
+      try {
+        const res = await fetch(
+          `${BASE_URL}/movie/popular?api_key=${TMDB_API}`
+        )
+
+        const data = await res.json()
+
+        setMovies(
+          data.results.map((movie: any) => ({
+            title: movie.title,
+            poster: movie.poster_path
+              ? `${IMAGE_BASE}${movie.poster_path}`
+              : "",
+            releaseDate: movie.release_date,
+          }))
+        )
+      } catch (err) {
+        console.error("Failed to fetch movies", err)
+      }
+    }
+
+    fetchMovies()
+  }, [])
+
   return (
-    <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-      {posters.map((poster, index) => (
+    <div className="p-6 grid grid-cols-2 gap-4">
+      {movies.map((movie) => (
         <MovieCard
-          key={index}
-          image={poster}        // dynamically assigned poster
-          title={`Movie ${index + 1}`}
-          date="12 July 2025"
+          key={movie.title}
+          title={movie.title}
+          image={movie.poster}
+          date={movie.releaseDate}
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
