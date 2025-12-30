@@ -1,16 +1,11 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 type InputProps = React.ComponentProps<"input"> & {
-  variant?: "default" | "hexLeft"
-}
+  variant?: "default" | "hexLeft";
+};
 
-function Input({
-  className,
-  type,
-  variant = "default",
-  ...props
-}: InputProps) {
+function Input({ className, type, variant = "default", ...props }: InputProps) {
   return (
     <input
       type={type}
@@ -29,19 +24,18 @@ function Input({
 
         variant === "hexLeft" && [
           "relative",
-            "bg-[#0fab48] text-white",
-            "rounded-none",
-            "[clip-path:polygon(10%_0%,_100%_0%,_95%_50%,_100%_100%,_10%_100%,_0%_50%)]",
-            "px-6 py-2",
-            "placeholder:text-white/70",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60",      
-            ],
-
-        className
+          "bg-[#0fab48] text-white",
+          "rounded-none",
+          "[clip-path:polygon(10%_0%,_100%_0%,_95%_50%,_100%_100%,_10%_100%,_0%_50%)]",
+          "px-6 py-2",
+          "placeholder:text-white/70",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60",
+        ],
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Input }
+export { Input };

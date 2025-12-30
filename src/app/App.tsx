@@ -4,10 +4,8 @@ import HeroSection from "@/pages/Home/HeroSection";
 const App = () => {
   return (
     <div>
-        <Navbar />
-        <HeroSection />
-     
-   
+      <Navbar />
+      <HeroSection />
     </div>
   );
 };
