@@ -15,7 +15,7 @@ export function MovieCard({ image, title, date }: MovieCardProps) {
   };
 
   return (
-    <Card className="group w-full h-full overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 hover:scale-110 hover:z-10 rounded-lg p-0">
+    <Card className="group w-full h-full overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-green-500/70 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/10 hover:scale-110 hover:z-10 rounded-lg p-0">
       {/* Image container with hover feedback */}
       {image ? (
         <div className="relative w-full aspect-2/3 bg-black overflow-hidden">
@@ -37,7 +37,7 @@ export function MovieCard({ image, title, date }: MovieCardProps) {
       {/* Title and Date */}
       <div className="px-3 ">
         <h3
-          className={`font-semibold text-white line-clamp-2 leading-tight group-hover:text-green-400 transition-colors ${getTitleSize(title)}`}
+          className={`font-semibold text-white line-clamp-2 leading-tight group-hover:text-emerald-400 transition-colors duration-300 ${getTitleSize(title)}`}
         >
           {title}
         </h3>
