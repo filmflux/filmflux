@@ -7,13 +7,6 @@ type MovieCardProps = {
 };
 
 export function MovieCard({ image, title, date }: MovieCardProps) {
-  // Adjust title size to prevent overflow
-  const getTitleSize = (title: string) => {
-    if (title.length < 15) return "text-base";
-    if (title.length < 25) return "text-sm";
-    return "text-xs";
-  };
-
   return (
     <Card className="group w-full h-full overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-green-500/70 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-500/10 hover:scale-110 hover:z-10 rounded-lg p-0">
       {/* Image container with hover feedback */}
@@ -35,9 +28,10 @@ export function MovieCard({ image, title, date }: MovieCardProps) {
       )}
 
       {/* Title and Date */}
-      <div className="px-3 ">
+      <div className="px-3 pb-1 pt-0 align-top">
         <h3
-          className={`font-semibold text-white line-clamp-2 leading-tight group-hover:text-emerald-400 transition-colors duration-300 ${getTitleSize(title)}`}
+          className={`font-semibold text-white truncate leading-tight group-hover:text-emerald-400 transition-colors duration-300`}
+          title={title}
         >
           {title}
         </h3>

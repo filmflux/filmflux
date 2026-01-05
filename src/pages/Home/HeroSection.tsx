@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MovieCard } from "@/components/ui/MovieCard";
+import { MovieCard } from "@/components/MovieCard";
 
 type Movie = {
   id: number;
@@ -57,8 +57,6 @@ const HeroSection = ({ query }: HeroSectionProps) => {
       <div className="absolute inset-0 bg-linear-to-b from-emerald-950 via-black to-black opacity-90" />
       {/* Deep gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-tr from-emerald-900/20 via-transparent to-purple-900/20" />
-      {/* Subtle radial glow center */}
-      <div className="absolute inset-0 bg-gradient-radial from-emerald-500/10 via-transparent to-transparent" />
       {/* subtle noise texture */}
       <div
         className="absolute inset-0 opacity-30 mix-blend-overlay"
