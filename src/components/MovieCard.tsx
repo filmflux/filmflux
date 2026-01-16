@@ -35,7 +35,7 @@ export function MovieCard({ image, title, date }: MovieCardProps) {
         >
           {title}
         </h3>
-        <p className="text-xs text-neutral-500 mt-0.5">{date || "Unknown"}</p>
+        <p className="text-xs  text-neutral-500 mt-0.5">{date || "Unknown"}</p>
       </div>
     </Card>
   );
