@@ -1,7 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
-import { Home, Library, Star } from "lucide-react";
+import { Search, Home, Library, Star } from "lucide-react";
 
 type NavItemProps = {
   icon: React.ElementType;
@@ -21,27 +20,23 @@ const NavItem = ({ icon: Icon, label, href, active }: NavItemProps) => {
       href={href}
       className={`
         group relative flex items-center gap-2
-        text-sm font-medium
-        transition-colors
-        ${active ? "text-green-500" : "text-neutral-300 hover:text-green-400"}
+        text-sm font-medium transition-colors
+        ${active ? "text-emerald-400" : "text-gray-300 hover:text-emerald-300"}
       `}
     >
       <Icon
         className={`
           h-5 w-5 transition-colors
-          ${active ? "text-green-500" : "text-neutral-400 group-hover:text-green-400"}
+          ${active ? "text-emerald-400" : "text-gray-400 group-hover:text-emerald-300"}
         `}
       />
-
       {label}
 
-      {/* underline */}
       <span
         className={`
-          absolute -bottom-5.25 left-0 h-0.5 w-full
-          bg-green-500
-          transition-transform duration-300
-          origin-center
+          absolute -bottom-[5px] left-0 h-[2px] w-full
+          bg-emerald-400 rounded-full
+          transition-transform duration-300 origin-center
           ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
         `}
       />
@@ -51,57 +46,62 @@ const NavItem = ({ icon: Icon, label, href, active }: NavItemProps) => {
 
 const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
   return (
-    <div className="sticky top-0 z-20 flex h-16 items-center bg-black/90 px-8 shadow-md">
-      {/* Site Logo */}
-      <div className="flex items-center">
-        <h1 className="text-3xl font-bold tracking-tighter">
-          <span className="text-emerald-300 drop-shadow-lg">Film</span>
-          <span className="text-gray-100">Flex</span>
+    <div
+      className="
+    fixed top-0 left-0 right-0 z-50
+    flex h-16 items-center
+    bg-gradient-to-b from-black/60 via-black/1 to-transparent
+    backdrop-blur-none backdrop-saturate-100
+    px-6 sm:px-8 md:px-10 lg:px-12
+    transition-all duration-300
+  "
+    >
+      {/* Logo */}
+      <div className="flex items-center shrink-0">
+        <h1 className="text-3xl font-bold tracking-tight">
+          <span className="text-emerald-300">Film</span>
+          <span className="text-white">Flex</span>
         </h1>
       </div>
-      {/* Search */}
-      <div className="ml-10 relative w-full max-w-md group">
-        <Input
-          className="w-full
-          pr-10
-          rounded-full
-          border border-neutral-700
-          bg-neutral-900
-          
-          text-sm
-          text-white
-          placeholder:opacity-90
-          focus:placeholder:opacity-60
-          placeholder:transition-opacity
 
-          focus-visible:ring-0
-          focus-visible:border-green-600
-          transition-all duration-300"
+      {/* Search */}
+      <div className="ml-8 md:ml-7 relative w-90 max-w-md lg:max-w-lg group">
+        <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search movies..."
+          className="
+            w-full pl-4 pr-10 py-2
+            bg-black/40 border border-white/1
+            text-white placeholder:text-gray-400/80
+            rounded-full text-sm
+            focus:bg-black/70 focus:border-emerald-500/60
+            focus:ring-1 focus:ring-emerald-500/30
+            transition-all duration-300 backdrop-blur-md
+          "
         />
         <Search
           className="
-          absolute right-3 top-1/2 -translate-y-1/2
-          h-5 w-6
-          text-neutral-400
-          transition-colors
-          group-focus-within:text-green-500"
+            absolute right-3.5 top-1/2 -translate-y-1/2
+            h-5 w-5 text-gray-400/80
+            group-focus-within:text-emerald-400 transition-colors
+          "
         />
       </div>
 
       <div className="flex-1" />
 
       {/* Nav Links + Avatar */}
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-7 md:gap-10">
         <NavItem icon={Home} label="Home" href="/" active />
         <NavItem icon={Library} label="Library" href="/library" />
         <NavItem icon={Star} label="Reviews" href="/reviews" />
 
-        <Avatar className="ml-2 size-9 ring-2 ring-green-500/60 hover:ring-green-400 transition-all duration-300">
+        <Avatar className="size-9 ring-1 ring-emerald-500/30 hover:ring-emerald-400/60 transition-all duration-300">
           <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>PF</AvatarFallback>
+          <AvatarFallback className="bg-emerald-950/70 text-emerald-200">
+            PF
+          </AvatarFallback>
         </Avatar>
       </div>
     </div>
