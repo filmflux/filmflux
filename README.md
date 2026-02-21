@@ -1,6 +1,8 @@
-# FilmFlux
-
-A movie discovery app built with React and powered by the TMDB API. Browse trending and popular films, search for your favorites, and explore cinema
+# <img src="./src/components/ui/logo.svg" height="90" alt="FilmFlux Logo">
+<p align="left">
+  <strong><font size="4">A movie discovery app built with React and powered by the TMDB API.</font></strong><br>
+  Browse trending and popular films, search for your favorites, and explore cinema.
+</p>
 
 ## 🌐 Live Preview
 
