@@ -83,7 +83,7 @@ const MovieCarousel = ({ apiKey }: MovieCarouselProps) => {
     startX.current = e.clientX;
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const handlePointerMove = (_e: React.PointerEvent) => {
     if (!isDragging) return;
     // deltaX can be used later for drag preview
   };
