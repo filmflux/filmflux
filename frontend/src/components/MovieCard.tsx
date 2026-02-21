@@ -41,4 +41,3 @@ export function MovieCard({ image, title, date }: MovieCardProps) {
   );
 }
 
-export default MovieCard;

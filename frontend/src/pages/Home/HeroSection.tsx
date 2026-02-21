@@ -13,12 +13,10 @@ type HeroSectionProps = {
   query: string;
 };
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
 async function fetchMovies(query: string): Promise<Movie[]> {
   const url = query
-    ? `${BACKEND_URL}/api/movies/search?query=${encodeURIComponent(query)}`
-    : `${BACKEND_URL}/api/movies/popular`;
+    ? `/api/movies/search?query=${encodeURIComponent(query)}`
+    : `/api/movies/popular`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error("Failed to fetch movies");
@@ -39,36 +37,45 @@ const HeroSection = ({ query }: HeroSectionProps) => {
 
   return (
     <section className="relative min-h-screen bg-black overflow-hidden">
+
       {/* ─────────────────────────────── */}
-      {/* PART 1: The Hero Area */}
+      {/* PART 1: The Hero Area (Cleared) */}
       {/* ─────────────────────────────── */}
       <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+        {/* Masks and Vignette overlays removed. 
+            The carousel is now 100% visible from edge to edge. 
+        */}
         <div className="absolute inset-0 z-0">
           <MovieCarousel />
         </div>
 
-        {/* Subtle Bottom Blend: It's at the very bottom 
+        {/* Subtle Bottom Blend: 
+            This is the only remaining gradient. It's at the very bottom 
             to ensure the video doesn't end in a "hard line" before the grid starts.
         */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
       </div>
 
+      {/* ─────────────────────────────── */}
+      {/* PART 2: The Atmospheric Background Area */}
+      {/* ─────────────────────────────── */}
       <div className="relative z-10 -mt-20">
-        {/* BACKGROUND ACCENTS */}
-        {/* 1. Base Vertical */}
+
+        {/* BACKGROUND ACCENTS (Requested Theme) */}
+        {/* 1. Base Vertical: Black top to "Less Black" (Neutral-950) middle */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-neutral-950 pointer-events-none" />
 
-        {/* 2. Bottom Green*/}
+        {/* 2. Bottom Green: Proper Emerald glow at the base */}
         <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-emerald-500/10 blur-[150px] rounded-[100%] translate-y-1/2 pointer-events-none" />
 
-        {/* 3. Right Cyan/Blue */}
+        {/* 3. Right Cyan/Blue: Atmospheric glow on the right side */}
         <div className="absolute top-0 right-0 h-full w-[40%] bg-cyan-500/10 blur-[120px] rounded-l-full translate-x-1/4 pointer-events-none" />
 
         {/* MAIN CONTENT */}
         <div className="relative z-20 py-12 px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20">
           <div className="mb-10 md:mb-16">
             <h1 className="text-4xl sm:text-6xl font-extrabold text-white leading-tight tracking-tighter">
-              {query ? "Search Results for" : "Discover"}{" "}
+              {query ? "Search Results for" : "Discover"} {" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 drop-shadow-2xl">
                 {query || "Popular Movies"}
               </span>
@@ -86,7 +93,7 @@ const HeroSection = ({ query }: HeroSectionProps) => {
                 {[...Array(14)].map((_, i) => (
                   <div
                     key={i}
-                    className="aspect-2/3 bg-neutral-900/40 border border-white/5 rounded-2xl animate-pulse"
+                    className="aspect-[2/3] bg-neutral-900/40 border border-white/5 rounded-2xl animate-pulse"
                     style={{ animationDelay: `${i * 80}ms` }}
                   />
                 ))}
@@ -96,9 +103,7 @@ const HeroSection = ({ query }: HeroSectionProps) => {
                 <p className="text-red-400 text-xl font-semibold italic">
                   Cinematic connection failed.
                 </p>
-                <p className="text-gray-400 mt-2">
-                  Check your signal and try again.
-                </p>
+                <p className="text-gray-400 mt-2">Check your signal and try again.</p>
               </div>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-6">

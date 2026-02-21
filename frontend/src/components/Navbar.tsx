@@ -18,27 +18,33 @@ const NavItem = ({ icon: Icon, label, href, active }: NavItemProps) => {
   return (
     <a
       href={href}
-      className={`
+      className={
+        `
         group relative flex items-center gap-2
         text-sm font-medium transition-colors
         ${active ? "text-emerald-400" : "text-gray-300 hover:text-emerald-300"}
-      `}
+      `
+      }
     >
       <Icon
-        className={`
+        className={
+          `
           h-5 w-5 transition-colors
           ${active ? "text-emerald-400" : "text-gray-400 group-hover:text-emerald-300"}
-        `}
+        `
+        }
       />
       {label}
 
       <span
-        className={`
+        className={
+          `
           absolute -bottom-1.25 left-0 h-0.5 w-full
           bg-emerald-400 rounded-full
           transition-transform duration-300 origin-center
           ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-        `}
+        `
+        }
       />
     </a>
   );
@@ -60,7 +66,7 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
       <div className="flex items-center shrink-0">
         <h1 className="text-3xl font-bold tracking-tight">
           <span className="text-emerald-300">Film</span>
-          <span className="text-white">Flex</span>
+          <span className="text-white">Flux</span>
         </h1>
       </div>
 
@@ -77,7 +83,7 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
             text-white placeholder:text-gray-400/80
             rounded-full text-sm
             focus:bg-black/70 focus:border-emerald-500/60
-            focus:ring-1 focus:ring-emerald-500/30
+            focus:outline-none focus:ring-1 focus:ring-emerald-500/30
             transition-all duration-300 backdrop-blur-md 
           "
         />
@@ -95,7 +101,7 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
       {/* Nav Links + Avatar */}
       <div className="flex items-center gap-7 md:gap-10">
         <NavItem icon={Home} label={"Home\u2002"} href="/" active />
-        <NavItem icon={Library} label={"Liberary\u2002"} href="/library" />
+        <NavItem icon={Library} label={"Library\u2002"} href="/library" />
         <NavItem icon={Star} label={"Review\u2002"} href="/reviews" />
 
         <Avatar className="size-9 ring-1 ring-emerald-500/30 hover:ring-emerald-400/60 transition-all duration-300">

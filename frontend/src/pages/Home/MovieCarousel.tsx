@@ -2,13 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { Play, Info } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store";
-import {
-  next,
-  prev,
-  setIndex,
-  pause,
-  resume,
-} from "@/store/slices/carouselSlice";
+import { next, prev, setIndex, pause, resume } from "@/store/slices/carouselSlice";
 
 export interface Movie {
   id: number;
@@ -27,8 +21,6 @@ const DEFAULT_HERO = {
     "https://image.tmdb.org/t/p/original/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg",
 };
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
 const MovieCarousel = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -37,12 +29,12 @@ const MovieCarousel = () => {
 
   const dispatch = useDispatch();
   const { currentIndex, isPaused } = useSelector(
-    (state: RootState) => state.carousel,
+    (state: RootState) => state.carousel
   );
 
   const fetchMovies = useCallback(async () => {
     try {
-      const res = await fetch(`${BACKEND_URL}/api/movies/trending`);
+      const res = await fetch(`/api/movies/trending`);
       if (!res.ok) throw new Error("Backend request failed");
 
       const data: Movie[] = await res.json();
@@ -85,7 +77,7 @@ const MovieCarousel = () => {
 
   const handlePointerMove = (_e: React.PointerEvent) => {
     if (!isDragging) return;
-  }; //unused Prefixing with _ tells TypeScript: “I know this parameter exists, I don’t need it.”
+  };
 
   const handlePointerUp = (e: React.PointerEvent | PointerEvent) => {
     if (!isDragging) return;
@@ -119,8 +111,8 @@ const MovieCarousel = () => {
         className="absolute inset-0 bg-cover bg-center scale-[1.05] transition-all duration-1000 ease-out opacity-100"
         style={{ backgroundImage: `url(${backdropUrl})` }}
       />
-      <div className="absolute inset-0 bg-linear-to-t from-black via-black/75 to-transparent/20 opacity-90 pointer-events-none" />
-      <div className="absolute inset-0 bg-linear-to-t from-emerald-950/50 via-transparent to-transparent opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-transparent/20 opacity-90 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/50 via-transparent to-transparent opacity-70 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_104%,transparent_40%,black_80%)] opacity-80 pointer-events-none" />
 
       <div className="absolute inset-0 z-10 flex items-end pb-10 sm:pb-14 md:pb-20 px-5 sm:px-8 md:px-12 lg:px-16">
@@ -156,11 +148,10 @@ const MovieCarousel = () => {
                 dispatch(pause());
                 setTimeout(() => dispatch(resume()), 8000);
               }}
-              className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex
+              className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${idx === currentIndex
                   ? "bg-emerald-400 w-8 shadow-emerald-500/50 shadow-md"
                   : "bg-white/40 hover:bg-white/70"
-              }`}
+                }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
