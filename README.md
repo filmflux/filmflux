@@ -1,9 +1,20 @@
-# 🎬 FilmFlux
+# <img src="./frontend/src/components/ui/logo.svg" height="90" alt="FilmFlux Logo">
+<p align="left">
+  <strong><font size="4">A movie discovery app built with React and powered by the TMDB API.</font></strong><br>
+  Browse trending and popular films, search for your favorites, and explore cinema.
+</p>
 
-A sleek, modern movie discovery app built with React and powered by the TMDB API. Browse trending and popular films, search for your favorites, and explore cinema
+## 🌐 Live Preview
+
+Check out the live preview of FilmFlux (Vercel Serverless branch):
+
+[Live Preview](https://filmflux-a168xwqep-kamizs-projects.vercel.app/)
 
 <!-- screenshot -->
-![Screenshot](screenshot.png)
+<img width="1903" height="798" alt="Screenshot_2" src="https://github.com/user-attachments/assets/56bc9f02-0ef8-43c8-9317-ddb64e3b6938" />
+
+<img width="1897" height="965" alt="Screenshot_1" src="https://github.com/user-attachments/assets/b45a7da2-30b9-4646-8bda-d529414a1615" />
+
 
 ---
 
