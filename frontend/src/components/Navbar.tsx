@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
-import { Search, Home, Library, Star } from "lucide-react";
+import { useState } from "react";
+import { Search, Home, Library, Star, Menu, X } from "lucide-react";
 
 type NavItemProps = {
   icon: React.ElementType;
@@ -13,6 +14,7 @@ type NavbarProps = {
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 };
+
 
 const NavItem = ({ icon: Icon, label, href, active }: NavItemProps) => {
   return (
@@ -51,6 +53,8 @@ const NavItem = ({ icon: Icon, label, href, active }: NavItemProps) => {
 };
 
 const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   return (
     <div
       className="
@@ -62,6 +66,12 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
     transition-all duration-300
   "
     >
+      <button
+  className="md:hidden mr-4 text-white"
+  onClick={() => setIsMenuOpen(prev => !prev)}
+>
+  {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+</button>
       {/* Logo */}
       <div className="flex items-center shrink-0">
         <h1 className="text-3xl font-bold tracking-tight">
@@ -99,8 +109,8 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
       <div className="flex-1" />
 
       {/* Nav Links + Avatar */}
-      <div className="flex items-center gap-7 md:gap-10">
-        <NavItem icon={Home} label={"Home\u2002"} href="/" active />
+<div className="hidden md:flex items-center gap-7 md:gap-10">
+          <NavItem icon={Home} label={"Home\u2002"} href="/" active />
         <NavItem icon={Library} label={"Library\u2002"} href="/library" />
         <NavItem icon={Star} label={"Review\u2002"} href="/reviews" />
 
@@ -111,7 +121,15 @@ const Navbar = ({ searchQuery, setSearchQuery }: NavbarProps) => {
           </AvatarFallback>
         </Avatar>
       </div>
+      {isMenuOpen && (
+  <div className="md:hidden fixed top-16 left-0 w-3/4 max-w-xs bg-black p-6 space-y-6 z-40">
+    <NavItem icon={Home} label="Home" href="/" active />
+    <NavItem icon={Library} label="Library" href="/library" />
+    <NavItem icon={Star} label="Reviews" href="/reviews" />
+  </div>
+)}
     </div>
+    
   );
 };
 
